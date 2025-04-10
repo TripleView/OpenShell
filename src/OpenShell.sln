@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenShell.Desktop", "OpenShell.Desktop\OpenShell.Desktop.csproj", "{11DBD404-0466-8738-51C4-DC166BE1B961}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenShell", "OpenShell\OpenShell.csproj", "{2A8D6DFC-475B-6E11-F08B-F64012622BCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11DBD404-0466-8738-51C4-DC166BE1B961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11DBD404-0466-8738-51C4-DC166BE1B961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11DBD404-0466-8738-51C4-DC166BE1B961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11DBD404-0466-8738-51C4-DC166BE1B961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A8D6DFC-475B-6E11-F08B-F64012622BCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A8D6DFC-475B-6E11-F08B-F64012622BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A8D6DFC-475B-6E11-F08B-F64012622BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A8D6DFC-475B-6E11-F08B-F64012622BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EBF8C33-456F-4868-9692-E3CF651A37D8}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!--If you are willing to use Windows/MacOS native APIs you will need to create 3 projects.
+    One for Windows with net7.0-windows TFM, one for MacOS with net7.0-macos and one with net7.0 TFM for Linux.-->
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+	  <AvaloniaVersion>11.2.4</AvaloniaVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Assets\Font\CascadiaCode.ttf" />
+    <None Remove="Assets\Font\CascadiaMono.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\Font\CascadiaCode.ttf" />
+    <AvaloniaResource Include="Assets\Font\CascadiaMono.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpenShell\OpenShell.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="setting.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

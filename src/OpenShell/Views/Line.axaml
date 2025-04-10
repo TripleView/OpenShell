@@ -1,0 +1,24 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:OpenShell.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OpenShell.Line">
+ 
+	<ItemsControl ItemsSource="{Binding List}"  >
+
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+				<views:AutomaticLineWrapPanel></views:AutomaticLineWrapPanel>
+            </ItemsPanelTemplate>
+
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate >
+                <views:LineRun Text="{Binding Text}" Index="{Binding Index}" IsBlink="{Binding IsBlink}" IsVirtual="{Binding IsVirtual}" Font="{Binding Font}" IsSelect="{Binding IsSelect}"></views:LineRun>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+
+</UserControl>
