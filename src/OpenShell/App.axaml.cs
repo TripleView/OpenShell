@@ -22,6 +22,11 @@ public partial class App : Application
             {
                 DataContext = new ScreenPanelVM()
             };
+
+            //desktop.MainWindow = new TestWindow()
+            //{
+            //    DataContext = null
+            //};
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
