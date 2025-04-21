@@ -18,15 +18,15 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new ScreenPanelVM()
-            };
-
-            //desktop.MainWindow = new TestWindow()
+            //desktop.MainWindow = new MainWindow
             //{
-            //    DataContext = null
+            //    DataContext = new ScreenPanelVM()
             //};
+
+            desktop.MainWindow = new TestWindow()
+            {
+                DataContext = null
+            };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {

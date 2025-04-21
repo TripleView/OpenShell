@@ -7,11 +7,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Avalonia.Interactivity;
+using Avalonia.Media;
+using Avalonia.Threading;
 using DynamicData;
 
 namespace OpenShell.Views;
 
-public class ScreenView : StackPanel, ILogicalScrollable
+public class ScreenView :Control, ILogicalScrollable
 {
     private bool canHorizontallyScroll;
     private bool canVerticallyScroll;
@@ -29,26 +31,57 @@ public class ScreenView : StackPanel, ILogicalScrollable
     private EventHandler? scrollInvalidated;
 
     private List<Button> btns = new List<Button>();
-
+    private List<Button> showBtns = new List<Button>();
+    private int btnCount = 1000000;
     protected override void OnLoaded(RoutedEventArgs e)
     {
         this.Width = this.Bounds.Width;
         this.Height = this.Bounds.Height;
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < btnCount; i++)
         {
             var btn = new Button() { Content = i.ToString() };
+            btn.Width = 200;
+            btn.Height = 40;
+            btn.IsVisible = true;
+            btn.ZIndex = 999;
             //((ISetLogicalParent)btn).SetParent(this);
             btns.Add(btn);
             //this.Children.Add(btn);
         }
-        this.Children.AddRange(btns.Take(31));
-        //this.InvalidateArrange();
+
+        //showBtns = btns.Take(31).ToList();
+        //this.VisualChildren.AddRange(showBtns);
+
         base.OnLoaded(e);
+    }
+
+    protected override Size ArrangeOverride(Size finalSize)
+    {
+        var y = 0;
+        foreach (var child in this.VisualChildren)
+        {
+            ((Control)child).Arrange(new Rect(0, y, 200, 40));
+            y += 40;
+        }
+
+        return finalSize;
+    }
+
+    protected override Size MeasureOverride(Size availableSize)
+    {
+        var y = 0;
+        foreach (var child in VisualChildren)
+        {
+            ((Control)child).Measure(new Size(200, 40));
+            y += 40;
+        }
+
+        return availableSize;
     }
 
     public ScreenView()
     {
-        this.extent = new Size(1, 1000);
+        this.extent = new Size(1, btnCount);
         this.scrollSize = new Size(1, 1);
         this.viewport = new Size(1, 31);
         
@@ -88,8 +121,15 @@ public class ScreenView : StackPanel, ILogicalScrollable
         set
         {
             this.offset = value;
-            this.Children.Clear();
-            this.Children.AddRange(btns.Skip((int)value.Y).Take(31));
+            this.VisualChildren.Clear();
+            showBtns = btns.Skip((int)value.Y).Take(31).ToList();
+            //showBtns = btns.Skip((int)value.Y).Take(1).ToList();
+            //showBtns.FirstOrDefault().Background = new SolidColorBrush(Colors.Red);
+            //showBtns.FirstOrDefault().Content = "123333333";
+            this.VisualChildren.AddRange(showBtns);
+            this.LogicalChildren.AddRange(showBtns);
+            this.InvalidateMeasure();
+            this.InvalidateArrange();
             Debug.WriteLine("当前offset为"+value);
         }
     }
