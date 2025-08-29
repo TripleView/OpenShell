@@ -12,20 +12,34 @@ using Avalonia.Threading;
 using DynamicData;
 
 namespace OpenShell.Views;
-
+/// <summary>
+/// 逻辑滚动（实现 ILogicalScrollable）列表共有 100 项，视口可显示 10 项 ⇒ Extent=100，Viewport=10，Offset 在 0..90 之间；PageDown 往往加 10。
+/// </summary>
 public class ScreenView :Control, ILogicalScrollable
 {
     private bool canHorizontallyScroll;
     private bool canVerticallyScroll;
+    /// <summary>
+    /// 步长。执行一次“细粒度滚动”（如箭头键、滚轮一档、LineUp/LineDown）时，Offset 增减的量（Width 作用于水平，Height 作用于垂直）。
+    /// </summary>
     private Size scrollSize;
+    /// <summary>
+    /// “翻页”步长（PageUp/PageDown 时 Offset 的增量），一般可设为 Viewport。
+    /// </summary>
     private Size pageScrollSize;
 
 
-
+    /// <summary>
+    /// 整个可滚动内容的总尺寸。
+    /// </summary>
     private Size extent;
-
+    /// <summary>
+    /// 当前可见区域的尺寸（“窗口有多大”）。
+    /// </summary>
     private Size viewport;
-
+    /// <summary>
+    /// 视口左上角在内容中的位置（“滚到哪里了”）。
+    /// </summary>
     private Vector offset;
 
     private EventHandler? scrollInvalidated;
@@ -49,6 +63,8 @@ public class ScreenView :Control, ILogicalScrollable
             //this.Children.Add(btn);
         }
 
+        this.Offset = new Vector(0, 0);
+        //RefreshUi();
         //showBtns = btns.Take(31).ToList();
         //this.VisualChildren.AddRange(showBtns);
 
@@ -82,9 +98,10 @@ public class ScreenView :Control, ILogicalScrollable
     public ScreenView()
     {
         this.extent = new Size(1, btnCount);
-        this.scrollSize = new Size(1, 1);
+        this.scrollSize = new Size(0, 1);
         this.viewport = new Size(1, 31);
-        
+        this.Offset = new Vector(0, 0);
+        this.pageScrollSize= new Size(0, 31);
     }
 
     public bool CanHorizontallyScroll
@@ -128,10 +145,16 @@ public class ScreenView :Control, ILogicalScrollable
             //showBtns.FirstOrDefault().Content = "123333333";
             this.VisualChildren.AddRange(showBtns);
             this.LogicalChildren.AddRange(showBtns);
-            this.InvalidateMeasure();
-            this.InvalidateArrange();
+            RefreshUi();
             Debug.WriteLine("当前offset为"+value);
         }
+    }
+
+    private void RefreshUi()
+    {
+        this.InvalidateMeasure();
+        this.InvalidateArrange();
+        RaiseScrollInvalidated(EventArgs.Empty);
     }
 
     public Size Viewport => viewport;

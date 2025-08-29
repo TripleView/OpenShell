@@ -1,6 +1,5 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Media;
-using SkiaSharp;
 using System.Globalization;
 using Avalonia;
 using static System.Net.Mime.MediaTypeNames;
