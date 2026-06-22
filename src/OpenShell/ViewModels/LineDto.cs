@@ -1,13 +1,8 @@
-﻿using System;
+﻿using Avalonia.Threading;
+using OpenShell.Dto;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using Avalonia.Threading;
-using DynamicData;
-using Newtonsoft.Json;
-using ReactiveUI;
-using OpenShell.Dto;
 
 namespace OpenShell.ViewModels;
 
@@ -72,7 +67,7 @@ public class LineDto : BaseBinding
 
         Dispatcher.UIThread.Invoke(() =>
         {
-            List.AddRange(tempList);
+            //List.AddRange(tempList);
         });
 
         OnPropertyChanged(nameof(List));

@@ -6,6 +6,7 @@
         xmlns:views="clr-namespace:OpenShell.Views"
         xmlns:my="using:OpenShell.Views"
         xmlns:net="clr-namespace:OpenShell"
+        x:DataType="vm:ScreenPanelVM"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         Width="800"
         Height="600"
@@ -16,10 +17,12 @@
 	<Window.Resources>
 		<x:String x:Key="Copy" >avares://OpenShell/Assets/copy.png</x:String>
 	</Window.Resources>
+
 	<Border>
+        <!--<Button Command="{Binding Test}">点我点我</Button>-->
 		<ScrollViewer Name="ScrollViewer" >
 			<views:ScreenPanel >
-				<!--<Button Command="{Binding Test}">点我点我</Button>-->
+
 				<views:ScreenPanel.ContextFlyout>
 					<MenuFlyout>
 						<MenuItem Header="Copy" Command="{Binding Test}">
@@ -46,9 +49,4 @@
 		</ScrollViewer>
 
 	</Border>
-	<!--<StackPanel>
-           
-           
-		</StackPanel>-->
-
 </Window>

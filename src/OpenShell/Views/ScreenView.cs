@@ -2,14 +2,11 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Avalonia.Interactivity;
-using Avalonia.Media;
-using Avalonia.Threading;
-using DynamicData;
 
 namespace OpenShell.Views;
 /// <summary>

@@ -1,19 +1,13 @@
-﻿using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.Reactive.Linq;
-using System.Threading.Tasks;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Media;
 using Avalonia.Threading;
-using DynamicData;
-using Newtonsoft.Json;
-using ReactiveUI;
 using OpenShell.Dto;
 using OpenShell.ViewModels;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace OpenShell.Views;
 
@@ -22,7 +16,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        this.AttachDevTools();
+        //this.AttachDevTools();
         this.AddHandler(InputElement.TextInputEvent, TextInputHandler, RoutingStrategies.Bubble);
         this.Activated += MainWindow_Activated;
         this.Loaded +=async (s,e)=>await MainWindow_Loaded(s,e);

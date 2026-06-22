@@ -64,7 +64,7 @@ namespace Demo.Controls
             _offscreen = null;
         }
 
-        protected override void OnGotFocus(FocusChangedEventArgs e)
+        protected override void OnGotFocus(Avalonia.Input.FocusChangedEventArgs e)
         {
             base.OnGotFocus(e);
             StartCaretBlink();

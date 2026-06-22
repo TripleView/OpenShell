@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Avalonia;
-using Avalonia.ReactiveUI;
+using ReactiveUI.Avalonia;
 
 namespace OpenShell.Desktop;
 
@@ -38,5 +38,8 @@ class Program
             .WithInterFont()
             .LogToTrace()
             .UseFont()
-            .UseReactiveUI();
+            .UseReactiveUI(x =>
+            {
+
+            });
 }

@@ -1,7 +1,9 @@
 ﻿using Avalonia.Input;
 using Avalonia.Media;
-using Avalonia.Platform;
-using ReactiveUI;
+using Avalonia.Threading;
+using Newtonsoft.Json;
+using OpenShell.Dto;
+using OpenShell.Service;
 using Renci.SshNet;
 using System;
 using System.Collections.Generic;
@@ -10,15 +12,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Avalonia.Threading;
-using DynamicData;
-using Newtonsoft.Json;
-using OpenShell.Dto;
-using OpenShell.Service;
 
 namespace OpenShell.ViewModels;
 
@@ -903,7 +899,7 @@ public class ScreenPanelVM : ViewModelBase
             Dispatcher.UIThread.Invoke((() =>
             {
                 this.Lines.Clear();
-                this.Lines.AddRange(this.AlternateScreenBuffer.Clone());
+                //this.Lines.AddRange(this.AlternateScreenBuffer.Clone());
             }));
         }
     }
@@ -920,7 +916,7 @@ public class ScreenPanelVM : ViewModelBase
 
         Dispatcher.UIThread.Invoke((() =>
         {
-            this.Lines.AddRange(lines);
+            //this.Lines.AddRange(lines);
         }));
        
 

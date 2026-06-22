@@ -3,7 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
-	  <AvaloniaVersion>11.2.4</AvaloniaVersion>
+	  <AvaloniaVersion>12.0.4</AvaloniaVersion>
   </PropertyGroup>
 
   
@@ -15,12 +15,13 @@
     <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
+    <!--<PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />-->
+    <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="ReactiveUI.Avalonia" Version="12.0.3" />
     <PackageReference Include="SSH.NET" Version="2024.0.0" />
-    <PackageReference Include="System.Reactive" Version="6.0.1" />
+    <!--<PackageReference Include="System.Reactive" Version="6.0.1" />-->
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using ReactiveUI;
-using OpenShell.Dto;
+﻿using OpenShell.Dto;
 
 namespace OpenShell.ViewModels;
 
